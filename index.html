@@ -3,7 +3,9 @@
 <title>musiQ</title>
 </head>
 <body>
-function redirect (url) {
+<script>
+    var url = "https://play.google.com/store/apps/details?id=com.dihanov.musiq";
+    function redirect (url) {
     var ua        = navigator.userAgent.toLowerCase(),
         isIE      = ua.indexOf('msie') !== -1,
         version   = parseInt(ua.substr(4, 2), 10);
@@ -21,5 +23,6 @@ function redirect (url) {
         window.location.href = url; 
     }
 }
+    </script>
 </body>
 </html>
