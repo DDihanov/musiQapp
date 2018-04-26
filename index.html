@@ -1,13 +1,27 @@
 <html>
 <head>
 <title>musiQ</title>
-<meta http-equiv="refresh" content="0; URL=https://play.google.com/store/apps/details?id=com.dihanov.musiq">
+<meta http-equiv="refresh" content="0; URL='https://play.google.com/store/apps/details?id=com.dihanov.musiq'">
 <meta name="keywords" content="automatic redirection">
 </head>
 <body>
-If your browser doesn't automatically redirect within a few seconds, 
-you may want to go to 
-<a href="http://example.com/">https://play.google.com/store/apps/details?id=com.dihanov.musiq</a> 
-manually.
+function redirect (url) {
+    var ua        = navigator.userAgent.toLowerCase(),
+        isIE      = ua.indexOf('msie') !== -1,
+        version   = parseInt(ua.substr(4, 2), 10);
+
+    // Internet Explorer 8 and lower
+    if (isIE && version < 9) {
+        var link = document.createElement('a');
+        link.href = url;
+        document.body.appendChild(link);
+        link.click();
+    }
+
+    // All other browsers can use the standard window.location.href (they don't lose HTTP_REFERER like Internet Explorer 8 & lower does)
+    else { 
+        window.location.href = url; 
+    }
+}
 </body>
 </html>
